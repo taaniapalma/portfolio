@@ -3,82 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tania Palma | Ingeniería</title>
+    <title>Tania Palma | Engineering Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --accent: #2563eb; /* Azul ingeniería */
-            --secondary: #64748b;
-            --line: #e2e8f0;
+            --bg: #0b0f1a;
+            --card-bg: #161b22;
+            --accent: #58a6ff; /* Azul GitHub */
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+            --border: #30363d;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            padding: 2rem;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 4rem 1rem;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
+        .container { max-width: 800px; margin: 0 auto; }
+
+        /* Header / Hero */
+        header { margin-bottom: 4rem; }
+        .name { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: #fff; }
+        .title { font-size: 1.1rem; color: var(--accent); font-family: 'Fira Code', monospace; margin-bottom: 1.5rem; }
+        .contact-info { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; color: var(--text-dim); }
+        .contact-info a { color: var(--text-dim); text-decoration: none; border-bottom: 1px solid transparent; }
+        .contact-info a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+        /* Sections */
+        section { margin-bottom: 4rem; }
+        h2 { font-size: 1.3rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+        h2::after { content: ""; height: 1px; flex: 1; background: var(--border); }
+
+        /* Experience & Projects */
+        .item { margin-bottom: 2.5rem; position: relative; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+        .item-role { font-weight: 700; color: #fff; }
+        .item-date { font-size: 0.85rem; color: var(--text-dim); font-family: 'Fira Code', monospace; }
+        .item-org { color: var(--accent); font-size: 0.95rem; margin-bottom: 0.5rem; font-weight: 500; }
+        .item-desc { color: var(--text-dim); font-size: 0.95rem; }
+        .item-desc ul { margin-left: 1.2rem; margin-top: 0.5rem; }
+
+        /* Skills */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .skill-cat h3 { font-size: 0.9rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.8rem; letter-spacing: 0.05em; }
+        .skill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .skill-tag { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            padding: 0.3rem 0.7rem; 
+            border-radius: 6px; 
+            font-size: 0.85rem; 
+            font-family: 'Fira Code', monospace;
         }
 
-        header {
-            margin-bottom: 4rem;
-            border-left: 4px solid var(--accent);
-            padding-left: 1.5rem;
-        }
-
-        h1 { font-size: 2.5rem; letter-spacing: -1px; }
-        p.subtitle { color: var(--secondary); font-size: 1.1rem; }
-
-        section { margin-bottom: 3rem; }
-        h2 { 
-            font-size: 0.9rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--line);
-            padding-bottom: 0.5rem;
-        }
-
-        .project-card {
-            margin-bottom: 2rem;
-        }
-
-        .project-card h3 { margin-bottom: 0.5rem; }
-        .project-card p { color: var(--secondary); margin-bottom: 0.5rem; }
-        
-        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tag {
-            background: #f1f5f9;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            color: var(--secondary);
-            font-family: monospace;
-        }
-
-        footer {
-            margin-top: 5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--line);
-            font-size: 0.9rem;
-            color: var(--secondary);
-        }
-
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        footer { text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 6rem; border-top: 1px solid var(--border); padding-top: 2rem; }
 
         @media (max-width: 600px) {
-            body { padding: 1rem; }
-            h1 { font-size: 2rem; }
+            .item-header { flex-direction: column; }
+            .name { font-size: 2rem; }
         }
     </style>
 </head>
@@ -86,50 +76,90 @@
 
     <div class="container">
         <header>
-            <h1>Tania Palma</h1>
-            <p class="subtitle">Estudiante de Ingeniería | Portfolio Técnico</p>
+            <h1 class="name">Tania Palma Lorita</h1>
+            <p class="title">Computer Engineering & STEM Student</p>
+            <div class="contact-info">
+                <span>📍 Barcelona, Spain</span>
+                <a href="mailto:tania.palma.lorita@gmail.com">tania.palma.lorita@gmail.com</a>
+                <a href="https://linkedin.com/in/tania-palma-lorita">LinkedIn</a>
+                <a href="https://github.com/taaniapl">GitHub</a>
+            </div>
         </header>
 
-        <section id="about">
-            <h2>Sobre mí</h2>
-            <p>Bienvenido a mi espacio personal. Aquí documento mis proyectos y avances en el mundo de la ingeniería. Mi enfoque actual se centra en resolver problemas complejos mediante código limpio y eficiente.</p>
+        <section id="experience">
+            <h2>Experiencia Profesional</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-role">ITD Architecture Intern</span>
+                    <span class="item-date">Presente</span>
+                </div>
+                <div class="item-org">Grifols</div>
+                <p class="item-desc">Análisis y documentación de sistemas IT empresariales, revisión de arquitecturas de sistemas y colaboración en la evaluación de soluciones tecnológicas infraestructurales.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Formación Académica</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-role">Doble Grado en Ingeniería Informática y Telecomunicaciones</span>
+                    <span class="item-date">2022 — 2027</span>
+                </div>
+                <div class="item-org">Universitat Autònoma de Barcelona (UAB)</div>
+                <p class="item-desc">Mención en Ingeniería de Computadores. Especialización en hardware, sistemas embebidos y desarrollo de software.</p>
+            </div>
         </section>
 
         <section id="projects">
             <h2>Proyectos Destacados</h2>
-            
-            <div class="project-card">
-                <h3>Nombre del Proyecto 1</h3>
-                <p>Descripción breve de lo que lograste con este proyecto. Explica el problema y tu solución.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Análisis de Datos</span>
-                    <span class="tag">Hardware</span>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-role">Full MVC Website Development</span>
                 </div>
+                <p class="item-desc">Desarrollo completo de una plataforma web bajo arquitectura Modelo-Vista-Controlador, gestionando la integración de frontend y backend.</p>
             </div>
-
-            <div class="project-card">
-                <h3>Nombre del Proyecto 2</h3>
-                <p>Otro ejemplo de proyecto de ingeniería. Puedes enlazar directamente al repositorio de GitHub.</p>
-                <div class="tags">
-                    <span class="tag">C++</span>
-                    <span class="tag">Optimización</span>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-role">Hackathon Talent4Cyber</span>
                 </div>
+                <p class="item-desc">Análisis de vulnerabilidades y desarrollo de estrategias defensivas en entornos competitivos bajo presión temporal.</p>
             </div>
         </section>
 
-        <section id="contact">
-            <h2>Contacto</h2>
-            <p>¿Interesado en colaborar? Puedes encontrarme en:</p>
-            <p style="margin-top: 1rem;">
-                <a href="mailto:tu-email@ejemplo.com">Email</a> • 
-                <a href="https://linkedin.com/in/tu-usuario">LinkedIn</a> • 
-                <a href="https://github.com/taaniapl">GitHub</a>
-            </p>
+        <section id="skills">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-container">
+                <div class="skill-cat">
+                    <h3>Lenguajes</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JS</span>
+                    </div>
+                </div>
+                <div class="skill-cat">
+                    <h3>Sistemas</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">VMware</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+                <div class="skill-cat">
+                    <h3>Ingeniería</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Digital Design</span>
+                        <span class="skill-tag">Microprocessors</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <footer>
-            &copy; 2024 Tania Palma — Construido con sencillez y seguridad.
+            <p>&copy; 2024 Tania Palma • Built with minimal HTML/CSS for security and performance</p>
         </footer>
     </div>
 
