@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tania Palma | Ingeniería</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --accent: #2563eb; /* Azul ingeniería */
+            --secondary: #64748b;
+            --line: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 4rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 1.5rem;
+        }
+
+        h1 { font-size: 2.5rem; letter-spacing: -1px; }
+        p.subtitle { color: var(--secondary); font-size: 1.1rem; }
+
+        section { margin-bottom: 3rem; }
+        h2 { 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 0.5rem;
+        }
+
+        .project-card {
+            margin-bottom: 2rem;
+        }
+
+        .project-card h3 { margin-bottom: 0.5rem; }
+        .project-card p { color: var(--secondary); margin-bottom: 0.5rem; }
+        
+        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tag {
+            background: #f1f5f9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            font-family: monospace;
+        }
+
+        footer {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--line);
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Tania Palma</h1>
+            <p class="subtitle">Estudiante de Ingeniería | Portfolio Técnico</p>
+        </header>
+
+        <section id="about">
+            <h2>Sobre mí</h2>
+            <p>Bienvenido a mi espacio personal. Aquí documento mis proyectos y avances en el mundo de la ingeniería. Mi enfoque actual se centra en resolver problemas complejos mediante código limpio y eficiente.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Proyectos Destacados</h2>
+            
+            <div class="project-card">
+                <h3>Nombre del Proyecto 1</h3>
+                <p>Descripción breve de lo que lograste con este proyecto. Explica el problema y tu solución.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Análisis de Datos</span>
+                    <span class="tag">Hardware</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Nombre del Proyecto 2</h3>
+                <p>Otro ejemplo de proyecto de ingeniería. Puedes enlazar directamente al repositorio de GitHub.</p>
+                <div class="tags">
+                    <span class="tag">C++</span>
+                    <span class="tag">Optimización</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contacto</h2>
+            <p>¿Interesado en colaborar? Puedes encontrarme en:</p>
+            <p style="margin-top: 1rem;">
+                <a href="mailto:tu-email@ejemplo.com">Email</a> • 
+                <a href="https://linkedin.com/in/tu-usuario">LinkedIn</a> • 
+                <a href="https://github.com/taaniapl">GitHub</a>
+            </p>
+        </section>
+
+        <footer>
+            &copy; 2024 Tania Palma — Construido con sencillez y seguridad.
+        </footer>
+    </div>
+
+</body>
+</html>
