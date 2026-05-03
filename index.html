@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tania Palma | Portfolio</title>
+    <title>Tania Palma | Portfolio de Ingeniería</title>
     <style>
-        /* Variables de Color: Modo Claro (Por defecto) */
+        /* Variables de Color: Modo Claro */
         :root {
             --bg-color: #f9fafb;
             --text-main: #111827;
-            --text-muted: #6b7280;
+            --text-muted: #4b5563;
+            --text-light: #9ca3af;
             --card-bg: #ffffff;
             --card-border: #e5e7eb;
             --accent: #2563eb;
             --accent-hover: #1d4ed8;
             --tag-bg: #eff6ff;
             --tag-text: #1e40af;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --transition: all 0.3s ease;
         }
 
         /* Variables de Color: Modo Oscuro */
         [data-theme="dark"] {
-            --bg-color: #111827;
-            --text-main: #f9fafb;
-            --text-muted: #9ca3af;
-            --card-bg: #1f2937;
-            --card-border: #374151;
-            --accent: #60a5fa;
-            --accent-hover: #93c5fd;
-            --tag-bg: #1e3a8a;
-            --tag-text: #bfdbfe;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-light: #64748b;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --accent: #38bdf8;
+            --accent-hover: #7dd3fc;
+            --tag-bg: #0c4a6e;
+            --tag-text: #bae6fd;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
         }
 
-        /* Reseteo y Estilos Base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -47,7 +50,7 @@
 
         .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
 
-        /* Navegación y Botón de Tema */
+        /* Navegación */
         nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4rem; }
         .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; }
         
@@ -61,38 +64,54 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
         }
         .theme-toggle:hover { border-color: var(--accent); }
 
-        /* Cabecera */
+        /* Header / Hero Section */
         header { margin-bottom: 5rem; }
-        h1 { font-size: 3rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; line-height: 1.2; }
-        .subtitle { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; }
-
-        /* Secciones Generales */
-        section { margin-bottom: 5rem; }
-        h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; border-bottom: 2px solid var(--card-border); padding-bottom: 0.5rem; }
-
-        /* Cuadrícula de Proyectos / Blog */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+        .greeting { font-size: 1.1rem; color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; display: block; }
+        h1 { font-size: 3rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 1rem; line-height: 1.1; }
+        .subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 700px; margin-bottom: 2rem; }
+        
+        .contact-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .contact-links a { 
+            color: var(--text-main); 
+            text-decoration: none; 
+            font-weight: 500; 
+            border-bottom: 2px solid transparent; 
+            padding-bottom: 2px;
+            transition: var(--transition);
         }
+        .contact-links a:hover { border-bottom-color: var(--accent); color: var(--accent); }
 
+        /* Secciones */
+        section { margin-bottom: 5rem; }
+        h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+        h2::after { content: ""; height: 1px; flex: 1; background: var(--card-border); }
+
+        /* Layout de Lista (Experiencia y Educación) */
+        .list-item { margin-bottom: 2rem; }
+        .list-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; flex-wrap: wrap; }
+        .list-title { font-size: 1.1rem; font-weight: 600; }
+        .list-date { font-size: 0.9rem; color: var(--text-light); }
+        .list-subtitle { color: var(--accent); font-weight: 500; margin-bottom: 0.8rem; font-size: 0.95rem; }
+        .list-desc { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Cuadrícula de Proyectos / Portfolio */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 1.5rem;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
         }
-        .card:hover { transform: translateY(-4px); border-color: var(--accent); }
-
+        .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+        
         .card-category {
             align-self: flex-start;
             background-color: var(--tag-bg);
@@ -105,82 +124,160 @@
             margin-bottom: 1rem;
             letter-spacing: 0.5px;
         }
-
         .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
         .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
         .card a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
-        .card a:hover { color: var(--accent-hover); text-decoration: underline; }
+        .card a:hover { text-decoration: underline; }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--card-border);
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        /* Habilidades */
+        .skills-container { display: flex; flex-direction: column; gap: 1.5rem; }
+        .skill-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .skill-group h3 { font-size: 0.9rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            font-weight: 500;
         }
 
-        @media (max-width: 600px) { h1 { font-size: 2.2rem; } }
+        /* Footer */
+        footer { text-align: center; padding-top: 2rem; border-top: 1px solid var(--card-border); color: var(--text-light); font-size: 0.9rem; margin-top: 4rem; }
+
+        @media (max-width: 600px) { h1 { font-size: 2.2rem; } .list-header { flex-direction: column; } }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Navegación Superior -->
+        <!-- Navegación -->
         <nav>
-            <div class="logo">Tania Palma</div>
-            <button class="theme-toggle" id="theme-toggle">🌓 Cambiar Tema</button>
+            <div class="logo">TP.</div>
+            <button class="theme-toggle" id="theme-toggle">🌓 Tema</button>
         </nav>
 
-        <!-- Presentación -->
+        <!-- Cabecera -->
         <header>
-            <h1>Ingeniería & <br>Desarrollo.</h1>
-            <p class="subtitle">Estudiante de Ingeniería Informática y Telecomunicaciones. Apasionada por el diseño de sistemas, la eficiencia y la resolución de problemas reales.</p>
+            <span class="greeting">Hola, soy Tania Palma 👋</span>
+            <h1>Ingeniería & <br>Desarrollo de Sistemas.</h1>
+            <p class="subtitle">
+                Estudiante de cuarto año del Doble Grado en Ingeniería Informática y Telecomunicaciones (STEM). 
+                Con sólidos conocimientos en diseño de hardware, desarrollo de software y sistemas embebidos. 
+                Apasionada por la innovación y la resolución de problemas tecnológicos reales.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:tania.palma.lorita@gmail.com">Email</a>
+                <a href="https://linkedin.com/in/tania-palma-lorita" target="_blank">LinkedIn</a>
+                <a href="https://github.com/taaniapl" target="_blank">GitHub</a>
+            </div>
         </header>
 
-        <!-- Nueva Sección: Cajón de Sastre Ordenado -->
-        <section id="portfolio-blog">
+        <!-- Formación -->
+        <section id="education">
+            <h2>Educación</h2>
+            <div class="list-item">
+                <div class="list-header">
+                    <span class="list-title">Doble Grado: Ingeniería Informática y Telecomunicaciones</span>
+                    <span class="list-date">Sep 2022 — 2027</span>
+                </div>
+                <div class="list-subtitle">Universitat Autònoma de Barcelona (UAB)</div>
+                <p class="list-desc">
+                    Mención en Ingeniería de Computadores. Cursos relevantes: Virtualización (VMware, Docker), 
+                    Estructuras de Datos y Algoritmos, Diseño de Sistemas Digitales y prácticas de laboratorio en equipos de red.
+                </p>
+            </div>
+        </section>
+
+        <!-- Proyectos y Apuntes -->
+        <section id="portfolio">
             <h2>Proyectos & Apuntes</h2>
-            
             <div class="grid">
-                <!-- Tarjeta 1: Proyecto -->
+                <!-- Tarjeta 1 -->
                 <div class="card">
                     <span class="card-category">Proyecto</span>
                     <h3>Desarrollo Web Full MVC</h3>
-                    <p>Diseño e implementación de una arquitectura Modelo-Vista-Controlador conectando un frontend dinámico con lógica backend robusta.</p>
-                    <a href="#">Ver detalles →</a>
+                    <p>Proyecto universitario para comprender e implementar la arquitectura frontend/backend aplicando el modelo MVC en un entorno real.</p>
+                    <a href="https://github.com/taaniapl" target="_blank">Ver en GitHub →</a>
                 </div>
 
-                <!-- Tarjeta 2: Artículo/Apunte -->
+                <!-- Tarjeta 2 -->
                 <div class="card">
-                    <span class="card-category">Apunte</span>
-                    <h3>Vulnerabilidades en Hackathons</h3>
-                    <p>Mis notas y aprendizajes sobre estrategias defensivas aplicadas durante el Hackathon Talent4Cyber.</p>
-                    <a href="#">Leer artículo →</a>
-                </div>
-
-                <!-- Tarjeta 3: Experiencia -->
-                <div class="card">
-                    <span class="card-category">Experiencia</span>
-                    <h3>Análisis de Arquitecturas IT</h3>
-                    <p>Documentación y evaluación de soluciones de infraestructura empresarial (Experiencia práctica en Grifols).</p>
+                    <span class="card-category">Hackathon</span>
+                    <h3>Talent4Cyber</h3>
+                    <p>Participación en retos de ciberseguridad. Análisis de vulnerabilidades y desarrollo de estrategias defensivas bajo presión en un entorno competitivo.</p>
                     <a href="#">Saber más →</a>
+                </div>
+
+                <!-- Tarjeta 3 (Puedes usarla para apuntes futuros) -->
+                <div class="card">
+                    <span class="card-category">Laboratorio</span>
+                    <h3>Sistemas y Virtualización</h3>
+                    <p>Prácticas de configuración de equipos de red, medición de señales con osciloscopio y despliegue de entornos con VMware y Docker.</p>
+                    <a href="#">Leer apuntes →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Habilidades Técnicas -->
+        <section id="skills">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-container">
+                <div class="skill-group">
+                    <h3>Programación</h3>
+                    <div class="tags">
+                        <span class="tag">C / C++</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML5 / CSS</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Sistemas y Arquitectura</h3>
+                    <div class="tags">
+                        <span class="tag">Computer Architecture</span>
+                        <span class="tag">Microprocessors</span>
+                        <span class="tag">Embedded Systems</span>
+                        <span class="tag">Digital Systems Design</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Redes, Cloud y Virtualización</h3>
+                    <div class="tags">
+                        <span class="tag">VMware</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">VirtualBox</span>
+                        <span class="tag">AWS (Basic)</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Herramientas</h3>
+                    <div class="tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">MATLAB</span>
+                        <span class="tag">LTSpice</span>
+                        <span class="tag">Jira / Confluence</span>
+                        <span class="tag">Figma</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            &copy; 2024 Tania Palma.
+            &copy; 2024 Tania Palma. <br>
+            <span style="font-size: 0.8rem; margin-top: 0.5rem; display: inline-block;">Inglés (C1) • Español • Catalán</span>
         </footer>
     </div>
 
-    <!-- Script para Modo Oscuro/Claro -->
+    <!-- Lógica del Tema Claro/Oscuro -->
     <script>
         const toggleBtn = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
 
-        // Comprobar si hay un tema guardado o usar el del sistema
+        // Comprobar preferencia guardada o del sistema
         const savedTheme = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
@@ -190,7 +287,7 @@
             htmlElement.setAttribute('data-theme', 'dark');
         }
 
-        // Lógica del botón
+        // Evento del botón
         toggleBtn.addEventListener('click', () => {
             const currentTheme = htmlElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
