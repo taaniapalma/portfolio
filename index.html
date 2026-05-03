@@ -3,165 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tania Palma | Engineering Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Tania Palma | Portfolio</title>
     <style>
+        /* Variables de Color: Modo Claro (Por defecto) */
         :root {
-            --bg: #0b0f1a;
-            --card-bg: #161b22;
-            --accent: #58a6ff; /* Azul GitHub */
-            --text-main: #e6edf3;
-            --text-dim: #8b949e;
-            --border: #30363d;
+            --bg-color: #f9fafb;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --card-bg: #ffffff;
+            --card-border: #e5e7eb;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --tag-bg: #eff6ff;
+            --tag-text: #1e40af;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --transition: all 0.3s ease;
         }
 
+        /* Variables de Color: Modo Oscuro */
+        [data-theme="dark"] {
+            --bg-color: #111827;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --card-bg: #1f2937;
+            --card-border: #374151;
+            --accent: #60a5fa;
+            --accent-hover: #93c5fd;
+            --tag-bg: #1e3a8a;
+            --tag-text: #bfdbfe;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Reseteo y Estilos Base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
-            padding: 4rem 1rem;
+            transition: var(--transition);
         }
 
-        .container { max-width: 800px; margin: 0 auto; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
 
-        /* Header / Hero */
-        header { margin-bottom: 4rem; }
-        .name { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.5rem; color: #fff; }
-        .title { font-size: 1.1rem; color: var(--accent); font-family: 'Fira Code', monospace; margin-bottom: 1.5rem; }
-        .contact-info { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; color: var(--text-dim); }
-        .contact-info a { color: var(--text-dim); text-decoration: none; border-bottom: 1px solid transparent; }
-        .contact-info a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+        /* Navegación y Botón de Tema */
+        nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4rem; }
+        .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; }
+        
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        .theme-toggle:hover { border-color: var(--accent); }
 
-        /* Sections */
-        section { margin-bottom: 4rem; }
-        h2 { font-size: 1.3rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
-        h2::after { content: ""; height: 1px; flex: 1; background: var(--border); }
+        /* Cabecera */
+        header { margin-bottom: 5rem; }
+        h1 { font-size: 3rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; line-height: 1.2; }
+        .subtitle { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; }
 
-        /* Experience & Projects */
-        .item { margin-bottom: 2.5rem; position: relative; }
-        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
-        .item-role { font-weight: 700; color: #fff; }
-        .item-date { font-size: 0.85rem; color: var(--text-dim); font-family: 'Fira Code', monospace; }
-        .item-org { color: var(--accent); font-size: 0.95rem; margin-bottom: 0.5rem; font-weight: 500; }
-        .item-desc { color: var(--text-dim); font-size: 0.95rem; }
-        .item-desc ul { margin-left: 1.2rem; margin-top: 0.5rem; }
+        /* Secciones Generales */
+        section { margin-bottom: 5rem; }
+        h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; border-bottom: 2px solid var(--card-border); padding-bottom: 0.5rem; }
 
-        /* Skills */
-        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
-        .skill-cat h3 { font-size: 0.9rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.8rem; letter-spacing: 0.05em; }
-        .skill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .skill-tag { 
-            background: var(--card-bg); 
-            border: 1px solid var(--border); 
-            padding: 0.3rem 0.7rem; 
-            border-radius: 6px; 
-            font-size: 0.85rem; 
-            font-family: 'Fira Code', monospace;
+        /* Cuadrícula de Proyectos / Blog */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        footer { text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 6rem; border-top: 1px solid var(--border); padding-top: 2rem; }
-
-        @media (max-width: 600px) {
-            .item-header { flex-direction: column; }
-            .name { font-size: 2rem; }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
+        .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+
+        .card-category {
+            align-self: flex-start;
+            background-color: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        .card a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .card a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) { h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- Navegación Superior -->
+        <nav>
+            <div class="logo">Tania Palma</div>
+            <button class="theme-toggle" id="theme-toggle">🌓 Cambiar Tema</button>
+        </nav>
+
+        <!-- Presentación -->
         <header>
-            <h1 class="name">Tania Palma Lorita</h1>
-            <p class="title">Computer Engineering & STEM Student</p>
-            <div class="contact-info">
-                <span>📍 Barcelona, Spain</span>
-                <a href="mailto:tania.palma.lorita@gmail.com">tania.palma.lorita@gmail.com</a>
-                <a href="https://linkedin.com/in/tania-palma-lorita">LinkedIn</a>
-                <a href="https://github.com/taaniapl">GitHub</a>
-            </div>
+            <h1>Ingeniería & <br>Desarrollo.</h1>
+            <p class="subtitle">Estudiante de Ingeniería Informática y Telecomunicaciones. Apasionada por el diseño de sistemas, la eficiencia y la resolución de problemas reales.</p>
         </header>
 
-        <section id="experience">
-            <h2>Experiencia Profesional</h2>
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-role">ITD Architecture Intern</span>
-                    <span class="item-date">Presente</span>
+        <!-- Nueva Sección: Cajón de Sastre Ordenado -->
+        <section id="portfolio-blog">
+            <h2>Proyectos & Apuntes</h2>
+            
+            <div class="grid">
+                <!-- Tarjeta 1: Proyecto -->
+                <div class="card">
+                    <span class="card-category">Proyecto</span>
+                    <h3>Desarrollo Web Full MVC</h3>
+                    <p>Diseño e implementación de una arquitectura Modelo-Vista-Controlador conectando un frontend dinámico con lógica backend robusta.</p>
+                    <a href="#">Ver detalles →</a>
                 </div>
-                <div class="item-org">Grifols</div>
-                <p class="item-desc">Análisis y documentación de sistemas IT empresariales, revisión de arquitecturas de sistemas y colaboración en la evaluación de soluciones tecnológicas infraestructurales.</p>
-            </div>
-        </section>
 
-        <section id="education">
-            <h2>Formación Académica</h2>
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-role">Doble Grado en Ingeniería Informática y Telecomunicaciones</span>
-                    <span class="item-date">2022 — 2027</span>
+                <!-- Tarjeta 2: Artículo/Apunte -->
+                <div class="card">
+                    <span class="card-category">Apunte</span>
+                    <h3>Vulnerabilidades en Hackathons</h3>
+                    <p>Mis notas y aprendizajes sobre estrategias defensivas aplicadas durante el Hackathon Talent4Cyber.</p>
+                    <a href="#">Leer artículo →</a>
                 </div>
-                <div class="item-org">Universitat Autònoma de Barcelona (UAB)</div>
-                <p class="item-desc">Mención en Ingeniería de Computadores. Especialización en hardware, sistemas embebidos y desarrollo de software.</p>
-            </div>
-        </section>
 
-        <section id="projects">
-            <h2>Proyectos Destacados</h2>
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-role">Full MVC Website Development</span>
-                </div>
-                <p class="item-desc">Desarrollo completo de una plataforma web bajo arquitectura Modelo-Vista-Controlador, gestionando la integración de frontend y backend.</p>
-            </div>
-            <div class="item">
-                <div class="item-header">
-                    <span class="item-role">Hackathon Talent4Cyber</span>
-                </div>
-                <p class="item-desc">Análisis de vulnerabilidades y desarrollo de estrategias defensivas en entornos competitivos bajo presión temporal.</p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Habilidades Técnicas</h2>
-            <div class="skills-container">
-                <div class="skill-cat">
-                    <h3>Lenguajes</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">C/C++</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">JS</span>
-                    </div>
-                </div>
-                <div class="skill-cat">
-                    <h3>Sistemas</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">VMware</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">AWS</span>
-                    </div>
-                </div>
-                <div class="skill-cat">
-                    <h3>Ingeniería</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">MATLAB</span>
-                        <span class="skill-tag">Digital Design</span>
-                        <span class="skill-tag">Microprocessors</span>
-                    </div>
+                <!-- Tarjeta 3: Experiencia -->
+                <div class="card">
+                    <span class="card-category">Experiencia</span>
+                    <h3>Análisis de Arquitecturas IT</h3>
+                    <p>Documentación y evaluación de soluciones de infraestructura empresarial (Experiencia práctica en Grifols).</p>
+                    <a href="#">Saber más →</a>
                 </div>
             </div>
         </section>
 
+        <!-- Footer -->
         <footer>
-            <p>&copy; 2024 Tania Palma • Built with minimal HTML/CSS for security and performance</p>
+            &copy; 2024 Tania Palma.
         </footer>
     </div>
 
+    <!-- Script para Modo Oscuro/Claro -->
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Comprobar si hay un tema guardado o usar el del sistema
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+        } else if (prefersDark) {
+            htmlElement.setAttribute('data-theme', 'dark');
+        }
+
+        // Lógica del botón
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
 </body>
 </html>
